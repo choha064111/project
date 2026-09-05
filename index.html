@@ -14,7 +14,7 @@
     <title>헤드라인 체크 | 뉴스 리터러시 도구</title>
 
     <link rel="stylesheet" href="styles.css" />
-    <script src="app.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -51,13 +51,15 @@
         </div>
 
         <div class="demo-panel">
-          <label for="headline-input">뉴스 제목</label>
-          <textarea id="headline-input" rows="3" maxlength="200" placeholder="예: 충격! 아무도 몰랐던 건강 비밀, 오늘 밤 전부 공개됩니다"></textarea>
-          <div class="input-meta"><span>개인정보를 입력하지 마세요.</span><span id="character-count">0 / 200</span></div>
+          <p>
+            아래 버튼은 실행 환경을 확인하기 위한 예시입니다.
+            프로젝트를 시작하면 이 영역을 팀의 핵심 기능으로
+            교체하세요.
+          </p>
 
           <div class="action-area">
             <button id="start-button" type="button">
-              <span aria-hidden="true">분석하기</span>
+              실행 확인
             </button>
 
             <button
@@ -75,7 +77,7 @@
             role="status"
             aria-live="polite"
           >
-            헤드라인을 입력하면 분석 결과가 표시됩니다.
+            버튼을 누르면 결과가 이곳에 표시됩니다.
           </div>
         </div>
       </section>

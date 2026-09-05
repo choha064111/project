@@ -210,6 +210,38 @@ h2 {
   margin-top: 0;
 }
 
+.input-area {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.input-area label,
+.prompt-area label {
+  color: var(--navy);
+  font-weight: 800;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--blue);
+  outline: 3px solid rgba(37, 99, 235, 0.15);
+}
+
 .action-area {
   display: flex;
   flex-wrap: wrap;
@@ -262,6 +294,58 @@ button:focus-visible {
   border-color: #6ee7b7;
   background: #ecfdf5;
   color: #065f46;
+}
+
+.result-box p {
+  margin: 0 0 8px;
+}
+
+.result-box ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.result-box > p:first-child {
+  color: var(--navy);
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.result-box > ul + p {
+  margin-top: 18px;
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.result-box > ul li + li {
+  margin-top: 5px;
+}
+
+.prompt-area {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #a7f3d0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.prompt-area textarea {
+  min-height: 180px;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.prompt-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#copy-status {
+  color: #047857;
+  font-weight: 700;
 }
 
 .principles {
