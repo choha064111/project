@@ -52,14 +52,32 @@
 
         <div class="demo-panel">
           <p>
-            아래 버튼은 실행 환경을 확인하기 위한 예시입니다.
-            프로젝트를 시작하면 이 영역을 팀의 핵심 기능으로
-            교체하세요.
+            제목과 본문을 함께 입력하면 문장의 중요도와 주장 간 연결을
+            분석해 낚시성·맥락 불일치·과장 신호를 종합적으로 판단합니다.
           </p>
+
+          <div class="input-area">
+            <label for="news-title">뉴스 제목</label>
+            <input
+              id="news-title"
+              type="text"
+              placeholder="예: 정부, 모든 국민에게 즉시 현금 지급 확정"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="input-area">
+            <label for="news-body">뉴스 본문</label>
+            <textarea
+              id="news-body"
+              rows="8"
+              placeholder="분석할 기사 본문을 문장 단위로 입력해 주세요."
+            ></textarea>
+          </div>
 
           <div class="action-area">
             <button id="start-button" type="button">
-              실행 확인
+              분석하기
             </button>
 
             <button
@@ -79,6 +97,15 @@
           >
             버튼을 누르면 결과가 이곳에 표시됩니다.
           </div>
+
+          <div id="prompt-area" class="prompt-area" hidden>
+            <label for="ai-prompt">다른 AI 지시용 프롬프트 양식</label>
+            <textarea id="ai-prompt" rows="10" readonly></textarea>
+            <div class="prompt-actions">
+              <button id="copy-prompt-button" type="button">프롬프트 복사</button>
+              <span id="copy-status" role="status" aria-live="polite"></span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -96,7 +123,7 @@
             원문, 작성자, 게시일을 함께 확인해야 합니다.
           </li>
           <li>
-            이 도구는 헤드라인의 표현 방식만 점검합니다.
+            이 도구의 점수는 사실 확정이 아니라 추가 확인을 위한 참고 자료입니다.
           </li>
         </ul>
       </section>

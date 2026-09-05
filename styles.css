@@ -311,6 +311,50 @@ button:focus-visible {
   font-weight: 900;
 }
 
+.analysis-score {
+  display: inline-block;
+  margin-right: 12px !important;
+  padding: 7px 11px;
+  border-radius: 4px;
+  background: var(--signal-soft);
+  color: var(--signal) !important;
+}
+
+.analysis-judgement {
+  display: inline-block;
+  color: var(--ink-soft);
+  font-weight: 800;
+}
+
+.result-heading {
+  padding-top: 14px;
+  border-top: 1px solid rgba(31, 111, 112, 0.16);
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.metric-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 20px;
+  padding: 14px 20px !important;
+  border: 1px solid rgba(31, 111, 112, 0.14);
+  border-radius: 4px;
+  background: rgba(229, 242, 239, 0.55);
+  list-style: none;
+}
+
+.reason-list li::marker {
+  color: var(--signal);
+  font-weight: 900;
+}
+
+.els-list {
+  padding: 14px 20px !important;
+  border-left: 3px solid var(--trust);
+  background: rgba(229, 242, 239, 0.55);
+}
+
 .result-box > ul + p {
   margin-top: 18px;
   color: var(--navy);
@@ -421,6 +465,10 @@ footer {
 
   .action-area button {
     width: 100%;
+  }
+
+  .metric-list {
+    grid-template-columns: 1fr;
   }
 }
 
