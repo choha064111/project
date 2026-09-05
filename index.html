@@ -11,7 +11,7 @@
       content="뉴스 헤드라인의 낚시성 표현을 점검하고 판단 근거를 제공하는 서비스"
     />
 
-    <title>헤드라인 체크 | 뉴스 리터러시 도구</title>
+    <title>Signal / 헤드라인 신뢰도 스캐너</title>
 
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
@@ -20,44 +20,34 @@
   <body>
     <header class="site-header">
       <div class="container header-content">
-        <a class="brand" href="/" aria-label="헤드라인 체크 홈">
-          <span class="brand-mark" aria-hidden="true">✓</span>
-          <span>헤드라인 체크</span>
-        </a>
-        <span class="header-note">뉴스 리터러시 도구</span>
+        <div class="header-copy">
+          <h1>AI 가짜뉴스 &amp; 낚시성 헤드라인 감지기</h1>
+        </div>
       </div>
     </header>
 
     <main class="container">
-      <section class="intro" aria-labelledby="project-title">
-        <p class="eyebrow">CHECK THE CLAIM, NOT THE CLICK</p>
-        <h1 id="project-title">이 헤드라인,<br /><em>얼마나 자극적인가요?</em></h1>
-        <p id="project-summary" class="project-summary">
-          헤드라인에 담긴 과장 표현과 감정적 단어를 점검해<br class="desktop-break" />
-          기사를 읽기 전 한 번 더 생각할 기준을 제공합니다.
-        </p>
-      </section>
-
       <section class="demo-section" aria-labelledby="demo-title">
         <div class="section-heading">
           <div>
-            <p class="section-label">01 / HEADLINE INPUT</p>
-            <h2 id="demo-title">확인할 헤드라인을 입력하세요</h2>
+            <p class="section-label">01 / INPUT SIGNAL</p>
+            <h2 id="demo-title">뉴스의 앞뒤를<br />함께 확인하세요.</h2>
           </div>
 
           <span id="app-status" class="status-badge">
-            분석 대기
+            READY TO SCAN
           </span>
         </div>
 
         <div class="demo-panel">
-          <p>
+          <div class="panel-intro"><span class="live-dot" aria-hidden="true"></span><p>로컬 AI 분석 모드 <span>제목 + 본문 간 의미 연결을 점검합니다.</span></p></div>
+          <p class="legacy-intro">
             제목과 본문을 함께 입력하면 문장의 중요도와 주장 간 연결을
             분석해 낚시성·맥락 불일치·과장 신호를 종합적으로 판단합니다.
           </p>
 
           <div class="input-area">
-            <label for="news-title">뉴스 제목</label>
+            <label for="news-title"><span class="field-index">A</span> 뉴스 제목</label>
             <input
               id="news-title"
               type="text"
@@ -67,7 +57,7 @@
           </div>
 
           <div class="input-area">
-            <label for="news-body">뉴스 본문</label>
+            <label for="news-body"><span class="field-index">B</span> 뉴스 본문</label>
             <textarea
               id="news-body"
               rows="8"
@@ -77,7 +67,7 @@
 
           <div class="action-area">
             <button id="start-button" type="button">
-              분석하기
+              <span aria-hidden="true">↗</span> 분석하기
             </button>
 
             <button
@@ -85,7 +75,7 @@
               class="secondary-button"
               type="button"
             >
-              지우기
+              초기화
             </button>
           </div>
 
@@ -95,14 +85,16 @@
             role="status"
             aria-live="polite"
           >
-            버튼을 누르면 결과가 이곳에 표시됩니다.
+            <span class="empty-icon" aria-hidden="true">◎</span>
+            <strong>분석 대기 중</strong>
+            <span>제목과 본문을 입력하면 신뢰도 신호가 이곳에 나타납니다.</span>
           </div>
 
           <div id="prompt-area" class="prompt-area" hidden>
-            <label for="ai-prompt">다른 AI 지시용 프롬프트 양식</label>
+            <div class="prompt-heading"><div><p class="section-label">03 / AI HANDOFF</p><label for="ai-prompt">다른 AI 지시용 프롬프트</label></div><span class="code-chip">PROMPT.TXT</span></div>
             <textarea id="ai-prompt" rows="10" readonly></textarea>
             <div class="prompt-actions">
-              <button id="copy-prompt-button" type="button">프롬프트 복사</button>
+              <button id="copy-prompt-button" type="button"><span aria-hidden="true">⧉</span> 프롬프트 복사</button>
               <span id="copy-status" role="status" aria-live="polite"></span>
             </div>
           </div>
