@@ -17,29 +17,60 @@ const startButton = document.querySelector("#start-button");
 const resetButton = document.querySelector("#reset-button");
 const resultBox = document.querySelector("#result");
 const appStatus = document.querySelector("#app-status");
+const headlineInput = document.querySelector("#headline-input");
+const characterCount = document.querySelector("#character-count");
+
+const sensationalPatterns = [
+  { pattern: /충격|경악|소름|발칵|난리/, label: "강한 감정 표현" },
+  { pattern: /비밀|전부 공개|아무도 몰랐|믿기 힘든/, label: "호기심을 자극하는 표현" },
+  { pattern: /무조건|100%|절대|역대급|최고의/, label: "단정적·과장 표현" },
+];
 
 function showRunningMessage() {
-  resultBox.textContent =
-    "✅ 앱이 정상적으로 실행되고 있습니다. 이제 이 예시 기능을 우리 팀의 핵심 기능으로 교체하세요.";
+  const headline = headlineInput.value.trim();
 
+  if (!headline) {
+    resultBox.textContent = "헤드라인을 입력한 뒤 분석해 주세요.";
+    resultBox.classList.remove("is-success");
+    appStatus.textContent = "입력 필요";
+    headlineInput.focus();
+    return;
+  }
+
+  const matchedPatterns = sensationalPatterns.filter(({ pattern }) =>
+    pattern.test(headline),
+  );
+
+  if (matchedPatterns.length > 0) {
+    resultBox.innerHTML = `<strong>주의가 필요한 표현이 ${matchedPatterns.length}개 발견되었습니다.</strong><span>${matchedPatterns.map(({ label }) => label).join(" · ")}<br />표현만으로 사실 여부를 판단할 수 없으니 원문과 출처를 함께 확인하세요.</span>`;
+    resultBox.classList.remove("is-success");
+    appStatus.textContent = "주의 표현 감지";
+    return;
+  }
+
+  resultBox.innerHTML = "<strong>눈에 띄는 낚시성 표현이 발견되지 않았습니다.</strong><span>다만 제목만으로 기사의 신뢰성을 보장할 수는 없습니다. 본문과 출처를 확인하세요.</span>";
   resultBox.classList.add("is-success");
+  appStatus.textContent = "1차 점검 완료";
+}
 
-  appStatus.textContent = "실행 확인 완료";
-  appStatus.classList.add("is-running");
+function updateCharacterCount() {
+  characterCount.textContent = `${headlineInput.value.length} / 200`;
 }
 
 function resetDemo() {
   resultBox.textContent =
-    "버튼을 누르면 결과가 이곳에 표시됩니다.";
+    "헤드라인을 입력하면 분석 결과가 표시됩니다.";
 
   resultBox.classList.remove("is-success");
 
-  appStatus.textContent = "시작 준비";
-  appStatus.classList.remove("is-running");
+  appStatus.textContent = "분석 대기";
+  headlineInput.value = "";
+  updateCharacterCount();
 }
 
 startButton.addEventListener("click", showRunningMessage);
 resetButton.addEventListener("click", resetDemo);
+headlineInput.addEventListener("input", updateCharacterCount);
 
 /*
  * TODO: 아래 순서로 팀 프로젝트를 구현하세요.
